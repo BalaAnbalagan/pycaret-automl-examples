@@ -1,5 +1,18 @@
 # PyCaret AutoML Examples
 
+> **📌 Important Note for Local Development**
+>
+> This repository is **optimized for local execution** with Python 3.9+ using virtual environments. Running locally is **recommended** because:
+> - ✅ **No GPU Required**: All examples run efficiently on CPU (tested on Apple M4 and Intel processors)
+> - ✅ **Version Control**: Avoid Python version conflicts between Google Colab and PyCaret by using isolated virtual environments (venv/conda)
+> - ✅ **Reproducibility**: Consistent package versions (PyCaret 3.3.2 with Python 3.9-3.11) ensure stable execution
+> - ✅ **Faster Setup**: Pre-configured notebooks with optimized model comparison (1-2 minutes vs 5-10 minutes)
+> - ✅ **Local Datasets**: All datasets included in the repository - no internet dependency during execution
+>
+> **Google Colab** is supported but may require runtime restarts due to package conflicts. See [Local Setup Guide](QUICKSTART.md) for detailed instructions.
+
+---
+
 A comprehensive collection of six practical examples demonstrating PyCaret's powerful AutoML capabilities across different machine learning tasks using real-world Kaggle datasets.
 
 ## What is PyCaret?
