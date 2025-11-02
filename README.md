@@ -317,19 +317,6 @@ Each code cell is preceded by a markdown cell containing:
 - **Technical Details**: Parameters, functions, and how they work
 - **Expected Output**: What to look for in the results
 
-## Results Summary
-
-| Example | Best Model | Performance Metric | Score |
-|---------|------------|-------------------|-------|
-| Binary Classification | [To be filled after execution] | Accuracy/AUC | TBD |
-| Multiclass Classification | [To be filled after execution] | Accuracy/F1 | TBD |
-| Regression | [To be filled after execution] | RMSE/R² | TBD |
-| Clustering | [To be filled after execution] | Silhouette Score | TBD |
-| Anomaly Detection | [To be filled after execution] | Anomaly Score | TBD |
-| Time Series | [To be filled after execution] | MAPE/RMSE | TBD |
-
-*Note: Results will be updated after running all notebooks*
-
 ## Learning Outcomes
 
 After completing these examples, you will learn:
