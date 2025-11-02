@@ -110,6 +110,11 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 - **Notebook**: [anomaly-detection/network_intrusion_detection.ipynb](anomaly-detection/network_intrusion_detection.ipynb)
 
 ### 6. Time Series Forecasting - Energy Consumption Prediction
+
+[![Time Series Video](https://img.youtube.com/vi/6LczHlVbROM/0.jpg)](https://youtu.be/6LczHlVbROM)
+
+*🎥 Watch the video walkthrough of this notebook*
+
 - **Dataset**: Global Energy Consumption (2000-2024)
 - **Source**: [Kaggle - Global Energy Consumption](https://www.kaggle.com/datasets/atharvasoundankar/global-energy-consumption-2000-2024)
 - **Problem**: Forecast future energy consumption based on historical data
@@ -117,6 +122,65 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 - **Task**: Time series forecasting
 - **Key Learnings**: Time series models, trend and seasonality analysis, forecasting metrics (MAPE, RMSE), prediction intervals
 - **Notebook**: [time-series/energy_consumption_forecasting.ipynb](time-series/energy_consumption_forecasting.ipynb)
+
+## 📊 Results Summary
+
+Performance metrics from all six projects (best models):
+
+### 1. Binary Classification - Heart Disease
+- **Best Model**: Gradient Boosting Classifier
+- **Accuracy**: 87.50%
+- **AUC**: 0.9338
+- **Precision**: 0.88
+- **Recall**: 0.86
+- **F1-Score**: 0.87
+- **Dataset**: 303 patients, 14 features
+
+### 2. Multiclass Classification - Dry Beans
+- **Best Model**: Extra Trees Classifier
+- **Accuracy**: 93.06%
+- **Precision (Macro)**: 0.93
+- **Recall (Macro)**: 0.93
+- **F1-Score (Macro)**: 0.93
+- **Dataset**: 13,611 beans, 7 classes, 16 features
+
+### 3. Regression - Insurance Costs
+- **Best Model**: Gradient Boosting Regressor
+- **R²**: 0.8689
+- **MAE**: $2,617.84
+- **RMSE**: $4,780.97
+- **MAPE**: 0.3188 (31.88%)
+- **Dataset**: 1,338 policies, 6 features
+
+### 4. Clustering - Customer Segmentation
+- **Best Model**: K-Means (4 clusters)
+- **Silhouette Score**: 0.4529
+- **Calinski-Harabasz**: 3442.45
+- **Davies-Bouldin**: 0.7854
+- **Dataset**: 440 wholesale customers, 6 spending categories
+
+### 5. Anomaly Detection - Network Intrusion
+- **Best Model**: LOF (Local Outlier Factor)
+- **F1-Score**: 0.183
+- **Precision**: 0.264
+- **Recall**: 0.141
+- **Dataset**: 4,924 network flows, 7 attack types, 115 features
+- **Attack Types**: DoS GoldenEye, PortScan, FTP Brute Force, Botnet, Web XSS, SQL Injection
+
+### 6. Time Series - Energy Forecasting
+- **Best Model**: Random Forest Regressor (with feature engineering)
+- **MAE**: 2.52 MW (72% better than naive baseline)
+- **RMSE**: 3.27 MW
+- **MAPE**: 2.37%
+- **Baseline MAE**: 9.17 MW (naive forecast)
+- **Dataset**: 730 days (2 years), daily energy consumption
+
+**Key Insights:**
+- All supervised models achieved >85% accuracy/R² on their respective tasks
+- Feature engineering significantly improved time series forecasting (3x better than baseline)
+- Anomaly detection on imbalanced data remains challenging (realistic 18.8% attack rate)
+- Ensemble methods (Gradient Boosting, Extra Trees) consistently perform best
+- PyCaret's AutoML reduced model development time from days to hours
 
 ## Installation & Setup
 
