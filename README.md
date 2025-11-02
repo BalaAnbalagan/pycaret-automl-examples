@@ -40,6 +40,11 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 ## Examples Included
 
 ### 1. Binary Classification - Heart Disease Prediction
+
+[![Binary Classification Video](https://img.youtube.com/vi/ACPdD7sVdbc/0.jpg)](https://youtu.be/ACPdD7sVdbc)
+
+*🎥 Watch the video walkthrough of this notebook*
+
 - **Dataset**: Heart Disease Dataset
 - **Source**: [Kaggle - Heart Disease Dataset](https://www.kaggle.com/datasets/yasserh/heart-disease-dataset)
 - **Problem**: Predict whether a patient has heart disease based on medical attributes
