@@ -52,3 +52,20 @@ Thumbs.db
 # Environment
 .env
 .venv
+
+# Personal video scripts and helper files
+VIDEO_SCRIPTS.md
+video-guides/
+**/cell*.py
+**/comparison_cell_code.py
+**/create_mixed_dataset.py
+**/data_loading_cell_updated.py
+**/extra_cells_to_add.md
+**/*_OLD_BACKUP.ipynb
+
+# Logs
+logs.log
+**/logs.log
+
+# Model artifacts
+**/catboost_info/
