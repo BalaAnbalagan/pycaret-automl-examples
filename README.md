@@ -96,6 +96,11 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 - **Notebook**: [clustering/wholesale_customer_segmentation.ipynb](clustering/wholesale_customer_segmentation.ipynb)
 
 ### 5. Anomaly Detection - Network Intrusion Detection
+
+[![Anomaly Detection Video](https://img.youtube.com/vi/CTwEzOeetPg/0.jpg)](https://youtu.be/CTwEzOeetPg)
+
+*🎥 Watch the video walkthrough of this notebook*
+
 - **Dataset**: Network Intrusion Detection Dataset (2024)
 - **Source**: [Kaggle - Network Intrusion Detection](https://www.kaggle.com/datasets/bcccdatasets/network-intrusion-detection)
 - **Problem**: Detect anomalous network behavior and potential intrusions
