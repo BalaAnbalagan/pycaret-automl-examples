@@ -54,6 +54,11 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 - **Notebook**: [binary-classification/heart_disease_classification.ipynb](binary-classification/heart_disease_classification.ipynb)
 
 ### 2. Multiclass Classification - Dry Bean Classification
+
+[![Multiclass Classification Video](https://img.youtube.com/vi/6k5lvXAYQ20/0.jpg)](https://youtu.be/6k5lvXAYQ20)
+
+*🎥 Watch the video walkthrough of this notebook*
+
 - **Dataset**: Dry Bean Dataset (UCI)
 - **Source**: [Kaggle - Dry Bean Dataset](https://www.kaggle.com/datasets/sansuthi/dry-bean-dataset)
 - **Problem**: Classify dry beans into 7 different varieties based on morphological features
