@@ -293,7 +293,7 @@ pycaret-automl-examples/
 
 ## Notebook Structure
 
-Each notebook follows a consistent structure with ELI20 (Explain Like I'm 20) explanations:
+Each notebook follows a consistent structure:
 
 1. **Introduction**: Problem context and business value
 2. **Library Imports**: Explanation of each library's purpose
@@ -309,9 +309,9 @@ Each notebook follows a consistent structure with ELI20 (Explain Like I'm 20) ex
 12. **Model Saving**: Serializing models for deployment
 13. **Conclusions**: Key takeaways and insights
 
-### ELI20 Explanation Format
+### Documentation Format
 
-Each code cell is preceded by a markdown cell containing:
+Each code cell is preceded by a markdown cell explaining:
 - **What**: Clear description of what the cell does
 - **Why**: The purpose and importance of this step
 - **Technical Details**: Parameters, functions, and how they work
