@@ -82,6 +82,11 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 - **Notebook**: [regression/insurance_cost_prediction.ipynb](regression/insurance_cost_prediction.ipynb)
 
 ### 4. Clustering - Wholesale Customer Segmentation
+
+[![Clustering Video](https://img.youtube.com/vi/YtmirEPIfSQ/0.jpg)](https://youtu.be/YtmirEPIfSQ)
+
+*🎥 Watch the video walkthrough of this notebook*
+
 - **Dataset**: Wholesale Customers Dataset
 - **Source**: [Kaggle - Wholesale Customers Dataset](https://www.kaggle.com/binovi/wholesale-customers-data-set)
 - **Problem**: Segment wholesale customers based on annual spending patterns
