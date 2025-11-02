@@ -442,157 +442,146 @@ Thanks for watching!
 
 **[0:00-0:40] Introduction - Set the Stakes**
 ```
-Welcome to the most exciting project in this series - Network Intrusion Detection
-using real cybersecurity data!
+Welcome to my most advanced project - Network Intrusion Detection using real
+cybersecurity data from the CIC-IDS-2017 dataset!
 
-This isn't synthetic data - I'm working with the CIC-IDS-2017 dataset, which contains
-ACTUAL network traffic captures including DoS attacks, botnets, and intrusions from
-a real testbed environment.
+This isn't synthetic data - I'm working with ACTUAL network traffic captures from
+a real university research testbed including multiple attack types:
+DoS attacks, PortScans, Brute Force, Botnets, and Web exploits.
 
-This is production-grade cybersecurity ML.
+This is production-grade cybersecurity ML that enterprises use to protect networks.
 ```
 
 **[0:40-1:40] The Cybersecurity Challenge**
 ```
-The problem: Detect malicious network traffic in real-time to prevent cyberattacks.
-
-[Screen: Show threat landscape]
-Modern enterprises face:
-- 2,200 attacks per day on average
-- Average breach cost: $4.45 million
-- 277 days average time to detect a breach
+The problem: Detect malicious network traffic in real-time without knowing what
+the attack looks like beforehand.
 
 Traditional signature-based detection FAILS against:
 - Zero-day attacks (never seen before)
-- Polymorphic malware (changes signature)
-- Advanced Persistent Threats
+- Polymorphic malware (changes signature every time)
+- Advanced Persistent Threats (low and slow)
 
-This is where ML excels - finding ANOMALOUS patterns, not matching signatures.
+This is where Machine Learning excels - detecting ANOMALOUS patterns instead of
+matching known signatures.
+
+[Screen: Show dataset loading cell with traffic composition]
 ```
 
-**[1:40-2:40] The Dataset - Real Attack Traffic**
+**[1:40-2:40] The Dataset - Diverse Attack Traffic**
 ```
-[Screen: Show dataset info]
+[Screen: Show dataset information output]
 
-CIC-IDS-2017 dataset from University of New Brunswick:
-- Captured from real network testbed
-- Mix of benign traffic and various attacks
-- I'm using the DoS GoldenEye attack subset
+CIC-IDS-2017 from University of New Brunswick:
+Nearly 5,000 network flows with 7 different traffic types:
 
-1,000 network flows with 115+ features including:
-[Screen: Show feature list scrolling]
-- Flow duration, packet counts (forward/backward)
-- Bytes per second, packets per second
-- Header lengths, payload statistics
-- TCP flags (FIN, SYN, ACK, RST, PSH)
-- Inter-arrival times (packet timing patterns)
-- Bulk transfer statistics
-- Subflow information
+Normal Traffic: 81.2% (4,000 flows)
+Attack Types: 18.8% (924 flows)
+  - DoS GoldenEye: 6.1% (300 flows)
+  - PortScan: 5.1% (250 flows) - Reconnaissance
+  - FTP Brute Force: 4.1% (200 flows) - Password attacks
+  - Botnet: 2.0% (100 flows) - Compromised hosts
+  - Web attacks (XSS + SQL Injection): 1.5% (74 flows)
 
-This is DEEP packet inspection level data - what enterprise firewalls analyze.
-```
+Each flow has 115 features - packet counts, byte rates, timing patterns,
+TCP flags - everything a firewall sees.
 
-**[2:40-3:40] Anomaly Detection Approach**
-```
-Why unsupervised learning?
-- We can't label every possible attack type
-- New attacks emerge daily (zero-day)
-- Assumption: Normal traffic is common, attacks are rare
-
-[Screen: Show model comparison]
-
-I tested 3 algorithms:
-
-1. **Isolation Forest** (Winner!)
-   - Isolates anomalies using random trees
-   - Fast: Handles 115 features easily
-   - Score: F1 = 0.85, Precision = 88%
-
-2. **Local Outlier Factor (LOF)**
-   - Density-based detection
-   - Good for varying density regions
-
-3. **One-Class SVM**
-   - Learns boundary around "normal"
-   - Higher computational cost
-
-[Screen: Show t-SNE visualization]
-This t-SNE plot shows anomalies (red) separated from normal traffic (blue) -
-our model learned the difference!
+This realistic 80/20 split mirrors real networks where attacks are the minority.
 ```
 
-**[3:40-4:40] Performance & Real-World Implications**
+**[2:40-3:40] Model Comparison - Finding the Best Algorithm**
+```
+[Screen: Scroll to "Comparing All Anomaly Detection Models"]
+
+Since PyCaret doesn't have compare_models for anomaly detection, I manually
+evaluated three algorithms:
+
+[Screen: Show comparison table]
+
+Results:
+1. LOF (Local Outlier Factor): F1 = 0.183 - WINNER!
+2. Isolation Forest: F1 = 0.071
+3. One-Class SVM: F1 = 0.054
+
+LOF won because it adapts to varying density regions - perfect for diverse
+attack types. It compares each flow's local density to its neighbors.
+
+All three flagged around 493 flows as anomalies (10% of dataset), but LOF
+had the best balance of precision and recall.
+
+[Screen: Scroll to t-SNE visualization]
+
+This t-SNE plot shows how the model separates anomalies (red/yellow) from
+normal traffic (blue) in 2D space.
+```
+
+**[3:40-4:40] Detection Results & Cybersecurity Reality**
 ```
 [Screen: Show confusion matrix]
 
-Results on REAL attack data:
-- Precision: 88% - Of flagged flows, 88% are truly malicious
-- Recall: 83% - We caught 83% of actual attacks
-- F1 Score: 0.85
+Using Isolation Forest on 4,924 flows:
+- Flagged 493 as suspicious (10%)
+- True attacks in dataset: 924 (18.8%)
 
-What does this mean in production?
+The confusion matrix shows:
+- True Positives: Caught attacks ✓
+- False Positives: Normal traffic flagged (alert fatigue)
+- False Negatives: Missed attacks ⚠️ (MOST CRITICAL!)
 
-**True Positives (83%)**: Attacks caught! 🛡️
-- DoS traffic successfully blocked
-- Prevents service disruption
-- Saves company money
+[Screen: Show top anomalies table]
 
-**False Positives (12%)**: False alarms
-- Security team investigates
-- Minor cost: analyst time
-- Better safe than sorry!
+Interestingly, the top 10 highest-scoring flows were mostly BENIGN traffic
+with unusual characteristics - high packet counts or long durations.
 
-**False Negatives (17%)**: Missed attacks ⚠️
-- MOST CRITICAL metric
-- These slip through defenses
-- Why we layer multiple detection methods
-
-Trade-off: Lower threshold = More FP but catch more attacks
+This is the challenge: anomaly detection flags "unusual," not necessarily
+"malicious." Real deployments need human analysts to investigate.
 ```
 
-**[4:40-5:30] Feature Analysis & Attack Patterns**
+**[4:40-5:30] Attack Patterns & What Models Detect**
 ```
-[Screen: Show feature importance]
+[Screen: Show characteristics comparison table]
 
-What makes traffic anomalous?
+What makes traffic anomalous? Comparing flagged vs normal flows:
 
-Top indicators:
-1. **Packets per second** - DoS floods network with packets
-2. **Flow duration** - Attacks often very short or very long
-3. **Byte rates** - Unusual data transfer patterns
-4. **Flag counts** - SYN floods have abnormal flag patterns
+Key differences:
+- Duration: 224% longer
+- Packet count: 2,485% higher (25x more packets!)
+- Payload bytes: 9,226% higher (92x more data!)
+- Forward packets: 2,180% higher
+- Backward packets: 2,802% higher
 
-[Screen: Show anomaly score distribution]
+These massive differences show DoS attacks and bulk transfers being flagged.
 
-The model assigns anomaly scores:
-- Score > 0.6: High priority investigation
-- Score 0.4-0.6: Medium priority
-- Score < 0.4: Likely benign
+The model learned that normal traffic is:
+- Short duration
+- Few packets
+- Small payloads
+- Balanced bidirectional flow
 
-This allows security teams to prioritize threats.
-```
-
-**[5:30-6:00] Production Deployment & Conclusion**
-```
-[Screen: Show architecture diagram concept]
-
-Production deployment:
-```
-Network Traffic → Feature Extraction → ML Model → Alert System → SIEM
-       ↓               ↓                   ↓           ↓
-  Packet Capture  Preprocessing    Anomaly Score   Investigation
+Attacks violate these patterns - floods of packets, huge payloads, or
+asymmetric traffic.
 ```
 
-This project demonstrates:
+**[5:30-6:00] Production Deployment & Wrap-Up**
+```
+[Screen: Show deployment architecture from notebook]
+
+Real-world deployment:
+Network → Feature Extraction → ML Model → Anomaly Scores → SIEM → Analysts
+
+This project showcases:
 ✓ Real cybersecurity dataset (CIC-IDS-2017)
-✓ Production-scale feature engineering (115+ features)
+✓ Diverse attack types (7 different threat categories)
+✓ Model comparison (tested 3 algorithms)
+✓ 115 features - production-scale feature engineering
 ✓ Unsupervised learning for zero-day detection
-✓ Trade-offs between precision and recall
-✓ SIEM integration ready
+✓ Trade-offs between false positives and false negatives
 
-This is enterprise-grade network security ML!
+Key takeaway: Anomaly detection finds unusual patterns, but requires human
+expertise to distinguish malicious from merely unusual. It's one layer in
+defense-in-depth security.
 
-Thanks for watching - stay secure! 🔒
+Thanks for watching - check out the notebook for full implementation! 🔒
 ```
 
 ---
