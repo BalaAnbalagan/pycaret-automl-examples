@@ -68,6 +68,11 @@ This repository contains six comprehensive Jupyter notebooks, each tackling a di
 - **Notebook**: [multiclass-classification/dry_bean_classification.ipynb](multiclass-classification/dry_bean_classification.ipynb)
 
 ### 3. Regression - Medical Insurance Cost Prediction
+
+[![Regression Video](https://img.youtube.com/vi/m2bq8WsI97E/0.jpg)](https://youtu.be/m2bq8WsI97E)
+
+*🎥 Watch the video walkthrough of this notebook*
+
 - **Dataset**: Medical Insurance Cost Dataset
 - **Source**: [Kaggle - Medical Insurance Dataset](https://www.kaggle.com/datasets/mirichoi0218/insurance)
 - **Problem**: Predict medical insurance costs based on personal attributes
